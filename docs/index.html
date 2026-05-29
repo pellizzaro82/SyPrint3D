@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SyPrint3D | Gestao para impressao 3D</title>
+    <meta
+      name="description"
+      content="SyPrint3D e um sistema de gestao para operacoes de impressao 3D com Node.js, Express e MongoDB."
+    />
+    <style>
+      :root {
+        --bg: #07111f;
+        --bg-soft: #0d1b31;
+        --card: rgba(10, 22, 40, 0.72);
+        --card-strong: rgba(8, 17, 31, 0.88);
+        --line: rgba(255, 255, 255, 0.12);
+        --text: #edf4ff;
+        --muted: #a8b8d4;
+        --accent: #ff8a1f;
+        --accent-2: #ffb347;
+        --ok: #4cd38a;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(255, 138, 31, 0.18), transparent 28%),
+          radial-gradient(circle at right 20%, rgba(76, 211, 138, 0.12), transparent 20%),
+          linear-gradient(160deg, var(--bg), var(--bg-soft));
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 28px 0 56px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 0;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        color: #06111f;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: 0 10px 24px rgba(255, 138, 31, 0.28);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a,
+      .button,
+      .button-secondary {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 12px 18px;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      }
+
+      .nav-links a:hover,
+      .button:hover,
+      .button-secondary:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        gap: 28px;
+        align-items: stretch;
+        margin-top: 40px;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .section-card,
+      .stack-card,
+      .steps-card,
+      .note {
+        background: var(--card);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero-copy {
+        border-radius: 30px;
+        padding: 34px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      h1 {
+        margin: 18px 0 14px;
+        font-size: clamp(2.5rem, 5vw, 4.7rem);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .gradient {
+        background: linear-gradient(120deg, #fff, #ffc16b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        margin: 0;
+        max-width: 58ch;
+        color: var(--muted);
+        font-size: 1.06rem;
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+
+      .button {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #08111e;
+        font-weight: 700;
+        border-color: transparent;
+      }
+
+      .button-secondary {
+        background: transparent;
+        color: var(--text);
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .stat {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .hero-card {
+        border-radius: 32px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+      }
+
+      .panel {
+        border-radius: 24px;
+        padding: 20px;
+        background: var(--card-strong);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .panel + .panel {
+        margin-top: 16px;
+      }
+
+      .panel-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .dot-group {
+        display: inline-flex;
+        gap: 8px;
+      }
+
+      .dot-group span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.24);
+      }
+
+      .badge {
+        color: var(--ok);
+        border: 1px solid rgba(76, 211, 138, 0.25);
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 0.84rem;
+        background: rgba(76, 211, 138, 0.08);
+      }
+
+      .panel h2,
+      .section-card h2,
+      .stack-card h2,
+      .steps-card h2 {
+        margin: 18px 0 10px;
+        font-size: 1.3rem;
+      }
+
+      .panel p,
+      .section-card p,
+      .stack-card p,
+      .steps-card p,
+      .note p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .mini-card {
+        border-radius: 18px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .content {
+        padding: 0 0 70px;
+      }
+
+      .grid-two {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .section-card,
+      .stack-card,
+      .steps-card,
+      .note {
+        border-radius: 28px;
+        padding: 28px;
+      }
+
+      .feature-list,
+      .stack-list,
+      .steps-list {
+        display: grid;
+        gap: 14px;
+        padding: 0;
+        margin: 22px 0 0;
+        list-style: none;
+      }
+
+      .feature-list li,
+      .stack-list li,
+      .steps-list li {
+        padding: 16px 18px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .feature-list strong,
+      .stack-list strong,
+      .steps-list strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .note {
+        margin-top: 24px;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        padding: 24px 0 40px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .grid-two,
+        .hero-stats,
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy,
+        .hero-card,
+        .section-card,
+        .stack-card,
+        .steps-card,
+        .note {
+          padding: 24px;
+        }
+
+        h1 {
+          font-size: clamp(2.2rem, 12vw, 3.4rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell hero">
+      <header class="nav">
+        <div class="brand">
+          <div class="brand-mark">3D</div>
+          <span>SyPrint3D</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#stack">Stack</a>
+          <a href="#publicacao">Publicacao</a>
+          <a href="https://github.com/pellizzaro82/SyPrint3D" target="_blank" rel="noreferrer">Repositorio</a>
+        </nav>
+      </header>
+
+      <section class="hero-grid">
+        <article class="hero-copy">
+          <span class="eyebrow">ERP para impressao 3D</span>
+          <h1>
+            Controle pedidos, materiais e operacoes com o
+            <span class="gradient">SyPrint3D</span>
+          </h1>
+          <p class="lead">
+            Projeto em Node.js, Express e MongoDB para gestao de clientes, produtos, pedidos,
+            orcamentos, equipamentos e catalogos auxiliares em uma operacao de impressao 3D.
+          </p>
+          <div class="actions">
+            <a class="button" href="https://github.com/pellizzaro82/SyPrint3D" target="_blank" rel="noreferrer">Ver codigo no GitHub</a>
+            <a class="button-secondary" href="#publicacao">Como publicar</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>Node + Express</strong>
+              <span>Backend com API autenticada</span>
+            </div>
+            <div class="stat">
+              <strong>MongoDB</strong>
+              <span>Persistencia principal do sistema</span>
+            </div>
+            <div class="stat">
+              <strong>GitHub Pages</strong>
+              <span>Landing publica do projeto</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="hero-card">
+          <div class="panel">
+            <div class="panel-top">
+              <div class="dot-group"><span></span><span></span><span></span></div>
+              <span class="badge">Publicado no GitHub</span>
+            </div>
+            <h2>Visao rapida</h2>
+            <p>
+              O repositrio foi publicado no GitHub e esta pagina existe para apresentar o projeto de forma web.
+            </p>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Pedidos e Orcamentos</strong>
+                <span>Fluxo comercial e produtivo para operacao 3D.</span>
+              </div>
+              <div class="mini-card">
+                <strong>Cadastros centrais</strong>
+                <span>Clientes, materiais, produtos e outros catalogos.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Importante</h2>
+            <p>
+              O GitHub Pages hospeda apenas conteudo estatico. A aplicacao completa continua dependendo do backend Express e do MongoDB para funcionar.
+            </p>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <main class="shell content">
+      <section class="grid-two">
+        <article class="section-card">
+          <h2>O que o projeto cobre</h2>
+          <ul class="feature-list">
+            <li>
+              <strong>Gestao comercial</strong>
+              Clientes, pedidos, orcamentos e acompanhamento do fluxo de producao.
+            </li>
+            <li>
+              <strong>Controle operacional</strong>
+              Materiais, equipamentos, compras, configuracoes e catalogos auxiliares.
+            </li>
+            <li>
+              <strong>Base para expansao</strong>
+              Estrutura pronta para crescer com autenticacao, planos e recursos administrativos.
+            </li>
+          </ul>
+        </article>
+
+        <article class="stack-card" id="stack">
+          <h2>Stack atual</h2>
+          <ul class="stack-list">
+            <li>
+              <strong>Frontend</strong>
+              HTML, CSS e JavaScript servidos pelo backend.
+            </li>
+            <li>
+              <strong>Backend</strong>
+              Node.js com Express e organizacao por controllers, services e routes.
+            </li>
+            <li>
+              <strong>Banco</strong>
+              MongoDB com Mongoose.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="note" id="publicacao">
+        <h2>Publicacao web</h2>
+        <p>
+          Esta pagina estatica foi preparada para ser publicada pelo GitHub Pages. Ela funciona como uma vitrine do projeto no navegador,
+          enquanto a aplicacao principal continua rodando localmente ou em uma hospedagem com suporte a Node.js e MongoDB.
+        </p>
+      </section>
+
+      <section class="steps-card">
+        <h2>Proximos passos para a app completa</h2>
+        <ul class="steps-list">
+          <li>
+            <strong>Hospedagem do backend</strong>
+            Subir o servidor Express em um provedor com suporte a Node.js.
+          </li>
+          <li>
+            <strong>Banco gerenciado</strong>
+            Apontar `MONGO_URI` para uma instancia publica ou privada do MongoDB.
+          </li>
+          <li>
+            <strong>Frontend integrado</strong>
+            Ajustar variaveis e endpoints para consumir a API publicada.
+          </li>
+        </ul>
+      </section>
+
+      <footer class="footer">
+        <span>SyPrint3D</span>
+        <a href="https://github.com/pellizzaro82/SyPrint3D" target="_blank" rel="noreferrer">Abrir repositorio</a>
+      </footer>
+    </main>
+  </body>
+</html>
