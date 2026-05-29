@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SyPrint3D | Login</title>
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="stylesheet" href="/css/pages/login.css" />
+</head>
+<body>
+  <div class="login-bg-glow glow-1" aria-hidden="true"></div>
+  <div class="login-bg-glow glow-2" aria-hidden="true"></div>
+
+  <main class="login-shell" role="main">
+    <section class="login-card" aria-labelledby="login-title">
+      <button class="login-close" type="button" aria-label="Fechar">&times;</button>
+
+      <header class="login-brand">
+        <img src="/images/Logo.png" alt="Logo SyPrint3D" class="login-logo" />
+        <p>Acesse seu painel com suas credenciais</p>
+      </header>
+
+      <h1 id="login-title">Entrar no sistema</h1>
+
+      <form id="loginForm" class="login-form" action="#" method="post">
+        <div class="login-field">
+          <input id="email" name="email" type="email" required placeholder=" " autocomplete="email" />
+          <label for="email">Seu e-mail</label>
+        </div>
+
+        <div class="login-field">
+          <input id="senha" name="senha" type="password" required placeholder=" " autocomplete="current-password" />
+          <label for="senha">Sua senha</label>
+        </div>
+
+        <div class="login-options">
+          <label class="remember-check">
+            <input type="checkbox" name="remember" />
+            <span>Lembrar-me</span>
+          </label>
+          <a href="#" class="forgot-link">Esqueceu sua senha?</a>
+        </div>
+
+        <button class="login-submit" type="submit">Entrar</button>
+        <p id="loginMessage" class="login-message" aria-live="polite"></p>
+      </form>
+
+      <footer class="login-footer">&copy;2026 SyPrint3D</footer>
+    </section>
+  </main>
+  <script type="module" src="/js/login.js"></script>
+</body>
+</html>
