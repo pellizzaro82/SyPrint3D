@@ -52,7 +52,15 @@ npm start
 
 ### GitHub Pages
 
-O repositorio possui uma pagina estatica em `docs/` para apresentacao publica do projeto no GitHub Pages.
+O GitHub Pages publica diretamente a pasta `public/` por meio do workflow `.github/workflows/deploy-pages.yml`.
+
+Fluxo atual:
+
+- altere arquivos em `public/`
+- faça commit
+- rode `npm run publish:pages` ou faça `git push origin main`
+
+Depois do push, o GitHub Actions publica a nova versao do site.
 
 ### Sistema completo
 
