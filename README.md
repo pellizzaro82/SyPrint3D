@@ -48,6 +48,35 @@ npm run dev
 npm start
 ```
 
+## Publicacao
+
+### GitHub Pages
+
+O repositorio possui uma pagina estatica em `docs/` para apresentacao publica do projeto no GitHub Pages.
+
+### Sistema completo
+
+O sistema completo nao pode rodar no GitHub Pages, porque depende de:
+
+- backend Node.js com Express
+- rotas `/api`
+- autenticacao JWT
+- MongoDB
+
+Para publicar a aplicacao completa, use um host com suporte a Node.js.
+
+Arquivos preparados neste repositorio:
+
+- `.env.example`: exemplo das variaveis obrigatorias
+- `render.yaml`: configuracao para deploy no Render
+
+Variaveis minimas para deploy:
+
+- `JWT_SECRET`
+- `MONGO_URI`
+- `AUTH_EMAIL`
+- `AUTH_PASSWORD`
+
 ## Scripts
 
 - `npm run dev`: inicia com `nodemon`

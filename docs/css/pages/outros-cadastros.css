@@ -1,0 +1,304 @@
+.page-outros-cadastros .outros-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.page-outros-cadastros .outro-card-nav {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  min-height: 136px;
+  padding: 18px 16px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  text-align: center;
+  color: #5f708b;
+  box-shadow: 0 8px 18px rgba(15, 34, 61, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-outros-cadastros .outro-card-nav:hover {
+  transform: translateY(-2px);
+  border-color: #cad9ef;
+  box-shadow: 0 14px 26px rgba(15, 34, 61, 0.08);
+}
+
+.page-outros-cadastros .outro-card-nav strong {
+  color: #314866;
+  font-size: 1rem;
+}
+
+.page-outros-cadastros .outro-card-nav span:last-child {
+  font-size: 0.84rem;
+}
+
+.page-outros-cadastros .outro-card-icon {
+  width: 36px;
+  height: 36px;
+  color: #7890b2;
+}
+
+.page-outros-cadastros .outro-card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.page-outros-cadastros .outros-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.page-outros-cadastros .outros-head h2 {
+  margin: 0;
+}
+
+.page-outros-cadastros .outros-head p {
+  margin: 4px 0 0;
+  color: #5f6f87;
+}
+
+.page-outros-cadastros .outro-back-btn {
+  padding: 8px 12px;
+}
+
+.page-outros-cadastros .outros-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-outros-cadastros .outros-toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+}
+
+.page-outros-cadastros .outros-content {
+  min-height: 290px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff, #fbfcff);
+  padding: 16px;
+  box-shadow: 0 8px 22px rgba(15, 34, 61, 0.06);
+}
+
+.page-outros-cadastros .outros-list {
+  display: grid;
+  gap: 8px;
+}
+
+.page-outros-cadastros .fornecedores-list-head,
+.page-outros-cadastros .simple-list-head {
+  display: grid;
+  gap: 10px;
+  padding: 0 12px 6px;
+  color: #6b7891;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.page-outros-cadastros .fornecedores-list-head,
+.page-outros-cadastros .outro-row-fornecedor {
+  grid-template-columns: minmax(220px, 1.8fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(180px, 1.1fr) minmax(100px, 0.9fr);
+}
+
+.page-outros-cadastros .simple-list-head,
+.page-outros-cadastros .outro-row-simple {
+  grid-template-columns: 1fr minmax(100px, 0.8fr);
+}
+
+.page-outros-cadastros .outro-row {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.page-outros-cadastros .outro-row:hover {
+  border-color: #c8d8f0;
+  box-shadow: 0 8px 18px rgba(35, 73, 131, 0.08);
+  transform: translateY(-1px);
+}
+
+.page-outros-cadastros .outro-col-item h4 {
+  margin: 0;
+  color: #1f2f46;
+}
+
+.page-outros-cadastros .outro-col-item p {
+  margin: 4px 0 0;
+  color: #66748c;
+}
+
+.page-outros-cadastros .outro-col a {
+  color: #27518e;
+  text-decoration: none;
+}
+
+.page-outros-cadastros .outro-col-whatsapp {
+  display: flex;
+  align-items: center;
+}
+
+.page-outros-cadastros .outro-whatsapp-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-outros-cadastros .outro-wa-btn {
+  color: #1b6e43;
+  border-color: #c9ead8;
+  background: #eefaf3;
+  text-decoration: none;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.page-outros-cadastros .outro-wa-btn svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.page-outros-cadastros .outro-col-acoes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-outros-cadastros .outros-empty {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+}
+
+.page-outros-cadastros .outros-empty h3 {
+  margin: 0;
+}
+
+.page-outros-cadastros .outros-empty p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.page-outros-cadastros .outros-empty-icon {
+  font-size: 2rem;
+  color: #c8ced8;
+}
+
+.page-outros-cadastros .outro-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 22, 47, 0.42);
+  z-index: 30;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.page-outros-cadastros .outro-drawer {
+  width: min(460px, 100%);
+  height: 100%;
+  background: #fff;
+  border-left: 1px solid var(--line);
+  overflow-y: auto;
+  box-shadow: -10px 0 30px rgba(16, 37, 69, 0.15);
+}
+
+.page-outros-cadastros .outro-drawer header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
+.page-outros-cadastros .outro-drawer header h3 {
+  margin: 0;
+}
+
+.page-outros-cadastros .outro-drawer header button {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6e7d95;
+}
+
+.page-outros-cadastros .outro-form {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.page-outros-cadastros .outro-form label {
+  font-size: 0.84rem;
+  color: #263a5c;
+  font-weight: 600;
+}
+
+.page-outros-cadastros .outro-form input,
+.page-outros-cadastros .outro-form textarea,
+.page-outros-cadastros .outro-form select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.page-outros-cadastros .outro-form-grid.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 980px) {
+  .page-outros-cadastros .outros-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-outros-cadastros .fornecedores-list-head,
+  .page-outros-cadastros .simple-list-head {
+    display: none;
+  }
+
+  .page-outros-cadastros .outro-row-fornecedor,
+  .page-outros-cadastros .outro-row-simple {
+    grid-template-columns: 1fr;
+  }
+
+  .page-outros-cadastros .outro-form-grid.two {
+    grid-template-columns: 1fr;
+  }
+}

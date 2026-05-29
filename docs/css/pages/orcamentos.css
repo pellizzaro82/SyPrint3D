@@ -1,0 +1,439 @@
+/* Orcamentos */
+.page-orcamentos .orcamentos-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.page-orcamentos .orcamentos-head h2 {
+  margin: 0;
+}
+
+.page-orcamentos .orcamentos-head p {
+  margin: 4px 0 0;
+  color: #5f6f87;
+}
+
+.page-orcamentos .orcamentos-count {
+  font-size: 0.86rem;
+  margin-left: 8px;
+  background: #ffe7bc;
+  color: #a15d00;
+  border-radius: 999px;
+  padding: 4px 10px;
+  vertical-align: middle;
+}
+
+.page-orcamentos .orcamentos-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.page-orcamentos .orcamentos-toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+}
+
+.page-orcamentos .orcamentos-content {
+  min-height: 290px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff, #fbfcff);
+  padding: 16px;
+  box-shadow: 0 8px 22px rgba(15, 34, 61, 0.06);
+}
+
+.page-orcamentos .orcamentos-list {
+  display: grid;
+  gap: 8px;
+}
+
+.page-orcamentos .orcamentos-list-head {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) minmax(110px, 1fr) minmax(80px, 0.7fr) minmax(80px, 0.7fr) minmax(100px, 0.9fr) minmax(120px, 0.95fr) minmax(100px, 0.9fr) minmax(90px, 0.8fr) minmax(150px, 1.1fr);
+  gap: 10px;
+  padding: 0 12px 6px;
+  color: #6b7891;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.page-orcamentos .orcamento-row {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) minmax(110px, 1fr) minmax(80px, 0.7fr) minmax(80px, 0.7fr) minmax(100px, 0.9fr) minmax(120px, 0.95fr) minmax(100px, 0.9fr) minmax(90px, 0.8fr) minmax(150px, 1.1fr);
+  gap: 10px;
+  align-items: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.page-orcamentos .orcamento-row:hover {
+  border-color: #c8d8f0;
+  box-shadow: 0 8px 18px rgba(35, 73, 131, 0.08);
+  transform: translateY(-1px);
+}
+
+.page-orcamentos .orcamento-col {
+  min-width: 0;
+}
+
+.page-orcamentos .orcamento-col-item h4 {
+  margin: 0;
+  color: #1f2f46;
+}
+
+.page-orcamentos .orcamento-col-item p {
+  margin: 4px 0 0;
+  color: #66748c;
+}
+
+.page-orcamentos .orcamento-col-valor {
+  color: #27518e;
+  font-weight: 700;
+}
+
+.page-orcamentos .status-badge {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.page-orcamentos .status-badge.ativo {
+  background: #eaf9ef;
+  color: #1c7f48;
+}
+
+.page-orcamentos .status-badge.pendente {
+  background: #fff5df;
+  color: #996100;
+}
+
+.page-orcamentos .status-badge.inativo {
+  background: #ffe6e6;
+  color: #a13838;
+}
+
+.page-orcamentos .orcamento-col-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.page-orcamentos .orcamento-col-acoes .icon-btn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.page-orcamentos .orcamentos-empty {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+}
+
+.page-orcamentos .orcamentos-empty h3 {
+  margin: 0;
+}
+
+.page-orcamentos .orcamentos-empty p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.page-orcamentos .orcamentos-empty-icon {
+  font-size: 2rem;
+  color: #c8ced8;
+}
+
+.page-orcamentos .orcamento-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 22, 47, 0.42);
+  z-index: 30;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.page-orcamentos .orcamento-drawer {
+  width: min(500px, 100%);
+  height: 100%;
+  background: #fff;
+  border-left: 1px solid var(--line);
+  overflow-y: auto;
+  box-shadow: -10px 0 30px rgba(16, 37, 69, 0.15);
+}
+
+.page-orcamentos .orcamento-drawer header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
+.page-orcamentos .orcamento-drawer header h3 {
+  margin: 0;
+}
+
+.page-orcamentos .orcamento-drawer header button {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6e7d95;
+}
+
+.page-orcamentos .orcamento-form {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.page-orcamentos .orcamento-items-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.page-orcamentos .orcamento-item-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+}
+
+.page-orcamentos .orcamento-item-head,
+.page-orcamentos .orcamento-items-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.page-orcamentos .orcamento-item-head strong {
+  color: #203657;
+}
+
+.page-orcamentos .orcamento-item-head span,
+.page-orcamentos .orcamento-items-actions small {
+  color: #6a7a93;
+  font-size: 0.78rem;
+}
+
+.page-orcamentos .orcamento-items-actions {
+  margin-bottom: 0;
+}
+
+.page-orcamentos .orcamento-form label {
+  font-size: 0.84rem;
+  color: #263a5c;
+  font-weight: 600;
+}
+
+.page-orcamentos .orcamento-form input,
+.page-orcamentos .orcamento-form textarea,
+.page-orcamentos .orcamento-form select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.page-orcamentos .orcamento-form textarea {
+  min-height: 78px;
+  resize: vertical;
+}
+
+.page-orcamentos .calc-summary-box {
+  border: 1px solid #2f4970;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #1f365b, #1a2f50);
+  padding: 10px 12px;
+}
+
+.page-orcamentos .calc-summary-box h4 {
+  margin: 0 0 8px;
+  color: #e9f2ff;
+  font-size: 0.92rem;
+}
+
+.page-orcamentos .calc-summary-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.page-orcamentos .calc-summary-grid p {
+  margin: 0;
+  font-size: 0.76rem;
+  color: #b6cae8;
+  border: 1px solid #2f4b74;
+  border-radius: 10px;
+  background: rgba(11, 30, 56, 0.52);
+  padding: 7px 9px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.page-orcamentos .calc-summary-grid strong {
+  color: #d6e9ff;
+}
+
+.page-orcamentos .calc-summary-grid .calc-summary-total {
+  grid-column: 1 / -1;
+  border-color: #648fcb;
+  background: linear-gradient(130deg, #274776, #223f69);
+  padding: 10px 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.page-orcamentos .calc-summary-grid .calc-summary-total strong {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.page-orcamentos .orcamento-form input[type='file'] {
+  border: 1px solid #2f4b74;
+  border-radius: 10px;
+  background: #112846;
+  color: #d6e6ff;
+  padding: 6px;
+}
+
+.page-orcamentos .orcamento-form input[type='file']::file-selector-button {
+  border: 1px solid #e39a28;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #e28603, #f0a22d);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 6px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.page-orcamentos .orcamento-form input[type='file']::-webkit-file-upload-button {
+  border: 1px solid #e39a28;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #e28603, #f0a22d);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 6px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+body.theme-light .page-orcamentos .calc-summary-box {
+  border-color: var(--line);
+  background: #f8fbff;
+}
+
+body.theme-light .page-orcamentos .calc-summary-box h4 {
+  color: #1f2f46;
+}
+
+body.theme-light .page-orcamentos .calc-summary-grid p {
+  color: #3a4c69;
+  border-color: #dbe6f4;
+  background: #ffffff;
+}
+
+body.theme-light .page-orcamentos .calc-summary-grid strong {
+  color: #112a55;
+}
+
+body.theme-light .page-orcamentos .calc-summary-grid .calc-summary-total {
+  border-color: #c8daf5;
+  background: linear-gradient(130deg, #eef5ff, #f7fbff);
+}
+
+body.theme-light .page-orcamentos .calc-summary-grid .calc-summary-total strong {
+  color: #0d3e8a;
+}
+
+body.theme-light .page-orcamentos .orcamento-form input[type='file'] {
+  border-color: var(--line);
+  background: #ffffff;
+  color: #263a5c;
+}
+
+.page-orcamentos .orcamento-form-grid.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.page-orcamentos .orcamento-form-grid.three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 980px) {
+  .page-orcamentos .orcamentos-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-orcamentos .orcamentos-list-head {
+    display: none;
+  }
+
+  .page-orcamentos .orcamento-row {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .page-orcamentos .calc-summary-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .page-orcamentos .orcamento-form-grid.two,
+  .page-orcamentos .orcamento-form-grid.three {
+    grid-template-columns: 1fr;
+  }
+
+  .page-orcamentos .orcamento-item-head,
+  .page-orcamentos .orcamento-items-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-orcamentos .calc-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-orcamentos .calc-summary-grid p,
+  .page-orcamentos .calc-summary-grid .calc-summary-total {
+    font-size: 0.74rem;
+  }
+}
